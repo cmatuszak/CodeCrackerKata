@@ -10,4 +10,9 @@ public class CodeCrackerTest {
     public void testEmptyMessage() {
         Assert.assertEquals("", new CodeCracker().decrypt(""));
     }
+
+    @Test
+    public void testDecryptionKeySame() {
+        Assert.assertEquals("a", new CodeCracker().decrypt("a"));
+    }
 }

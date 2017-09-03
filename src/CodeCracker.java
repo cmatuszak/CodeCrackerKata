@@ -4,6 +4,6 @@
 public class CodeCracker {
 
     public String decrypt(String message) {
-        return "";
+        return message;
     }
 }
