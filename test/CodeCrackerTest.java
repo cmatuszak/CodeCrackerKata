@@ -8,11 +8,16 @@ public class CodeCrackerTest {
 
     @Test
     public void testEmptyMessage() {
-        Assert.assertEquals("", new CodeCracker().decrypt(""));
+        Assert.assertEquals("", new CodeCracker("").decrypt(""));
     }
 
     @Test
     public void testDecryptionKeySame() {
-        Assert.assertEquals("a", new CodeCracker().decrypt("a"));
+        Assert.assertEquals("a", new CodeCracker("a").decrypt("a"));
+    }
+
+    @Test
+    public void testDecryptionKeyOneOverSingleLetter() {
+        Assert.assertEquals("a", new CodeCracker("b").decrypt("b"));
     }
 }
