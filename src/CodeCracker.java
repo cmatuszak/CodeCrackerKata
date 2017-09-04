@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class CodeCracker {
     private List<String> key;
-    private String[] alphabet;
+    private List<String> alphabet;
 
     /**
      * Constructs a new CodeCracker with the given decryption/encryption key
@@ -17,9 +17,9 @@ public class CodeCracker {
      */
     public CodeCracker(String key) {
         this.key = Arrays.asList(key.split(" "));
-        this.alphabet = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i",
+        this.alphabet = Arrays.asList(new String[] {"a", "b", "c", "d", "e", "f", "g", "h", "i",
                 "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x",
-                "y", "z"};
+                "y", "z"});
     }
 
     /**
@@ -31,7 +31,7 @@ public class CodeCracker {
         String answer = "";
         for (int i = 0; i < message.length(); i++) {
             if (key.indexOf(message.substring(i, i + 1)) != -1) {
-                answer += alphabet[key.indexOf(message.substring(i, i + 1))];
+                answer += alphabet.get(key.indexOf(message.substring(i, i + 1)));
             } else {
                 throw new IllegalArgumentException("Message contains a character not in the key");
             }
@@ -45,6 +45,10 @@ public class CodeCracker {
      * @return the encrypted message
      */
     public String encrypt(String message) {
-        return message;
+        if (message.length() > 0) {
+            return key.get(alphabet.indexOf(message.substring(0, 1)));
+        } else {
+            return "";
+        }
     }
 }

@@ -53,4 +53,9 @@ public class CodeCrackerTest {
     public void testEncryptionKeySame() {
         Assert.assertEquals("a", new CodeCracker("a").encrypt("a"));
     }
+
+    @Test
+    public void testEncryptionKeyOneOverSingleLetter() {
+        Assert.assertEquals("b", new CodeCracker("b").encrypt("a"));
+    }
 }
