@@ -20,4 +20,9 @@ public class CodeCrackerTest {
     public void testDecryptionKeyOneOverSingleLetter() {
         Assert.assertEquals("a", new CodeCracker("b").decrypt("b"));
     }
+
+    @Test
+    public void testDecryptionKeyOneOverTwoLetters() {
+        Assert.assertEquals("ab", new CodeCracker("b c").decrypt("bc"));
+    }
 }

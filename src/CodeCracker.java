@@ -28,10 +28,10 @@ public class CodeCracker {
      * @return the decrypted message
      */
     public String decrypt(String message) {
-        if (message.length() > 0) {
-            return alphabet[key.indexOf(message.substring(0, 1))];
-        } else {
-            return "";
+        String answer = "";
+        for (int i = 0; i < message.length(); i++) {
+            answer += alphabet[key.indexOf(message.substring(i, i + 1))];
         }
+        return answer;
     }
 }
