@@ -27,16 +27,7 @@ public class CodeCracker {
      * @return the decrypted message
      */
     public String decrypt(String message) {
-        String answer = "";
-        for (int i = 0; i < message.length(); i++) {
-            int index = key.indexOf(message.substring(i, i + 1));
-            if (index != -1) {
-                answer += alphabet.get(index);
-            } else {
-                throw new IllegalArgumentException("Message contains a character not in the key");
-            }
-        }
-        return answer;
+        return translate(key, alphabet, message);
     }
 
     /**
@@ -45,11 +36,23 @@ public class CodeCracker {
      * @return the encrypted message
      */
     public String encrypt(String message) {
+        // encrypting is just the opposite of decrypting, so switch the alphabet and the key
+        return translate(alphabet, key, message);
+    }
+
+    /**
+     * Translate the given message to the given alphabet using the given key
+     * @param key the decryption/encryption key to use
+     * @param alphabet the alphabet to be converted to
+     * @param message the message to translate
+     * @return the translated message
+     */
+    private String translate(List<String> key, List<String> alphabet, String message) {
         String answer = "";
         for (int i = 0; i < message.length(); i++) {
-            int index = alphabet.indexOf(message.substring(i, i + 1));
+            int index = key.indexOf(message.substring(i, i + 1));
             if (index != -1) {
-                answer += key.get(alphabet.indexOf(message.substring(i, i + 1)));
+                answer += alphabet.get(index);
             } else {
                 throw new IllegalArgumentException("Message contains a character not in the key");
             }
