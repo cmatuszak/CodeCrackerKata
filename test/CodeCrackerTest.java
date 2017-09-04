@@ -63,4 +63,22 @@ public class CodeCrackerTest {
     public void testEncryptionKeyOneOverTwoLetters() {
         Assert.assertEquals("bc", new CodeCracker("b c").encrypt("ab"));
     }
+
+    @Test
+    public void testEncryptionKeyWholeAlphabet() {
+        Assert.assertEquals("dbjumjo", new CodeCracker("b c d e f g h i j k l m n o p q r s t u " +
+                "v w x y z a").encrypt("caitlin"));
+    }
+
+    @Test
+    public void testEncryptionKeyWithSpecialCharacters() {
+        Assert.assertEquals("&£aadldga(", new CodeCracker("! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o")
+                .encrypt("helloworld"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testEncryptInvalidCharacter() {
+        new CodeCracker("! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o")
+                .encrypt("&£aadpdga(");
+    }
 }

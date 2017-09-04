@@ -29,8 +29,9 @@ public class CodeCracker {
     public String decrypt(String message) {
         String answer = "";
         for (int i = 0; i < message.length(); i++) {
-            if (key.indexOf(message.substring(i, i + 1)) != -1) {
-                answer += alphabet.get(key.indexOf(message.substring(i, i + 1)));
+            int index = key.indexOf(message.substring(i, i + 1));
+            if (index != -1) {
+                answer += alphabet.get(index);
             } else {
                 throw new IllegalArgumentException("Message contains a character not in the key");
             }
@@ -46,7 +47,12 @@ public class CodeCracker {
     public String encrypt(String message) {
         String answer = "";
         for (int i = 0; i < message.length(); i++) {
-            answer += key.get(alphabet.indexOf(message.substring(i, i + 1)));
+            int index = alphabet.indexOf(message.substring(i, i + 1));
+            if (index != -1) {
+                answer += key.get(alphabet.indexOf(message.substring(i, i + 1)));
+            } else {
+                throw new IllegalArgumentException("Message contains a character not in the key");
+            }
         }
         return answer;
     }
