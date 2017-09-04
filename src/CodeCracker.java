@@ -30,7 +30,11 @@ public class CodeCracker {
     public String decrypt(String message) {
         String answer = "";
         for (int i = 0; i < message.length(); i++) {
-            answer += alphabet[key.indexOf(message.substring(i, i + 1))];
+            if (key.indexOf(message.substring(i, i + 1)) != -1) {
+                answer += alphabet[key.indexOf(message.substring(i, i + 1))];
+            } else {
+                throw new IllegalArgumentException("Message contains a character not in the key");
+            }
         }
         return answer;
     }
