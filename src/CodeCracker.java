@@ -38,4 +38,13 @@ public class CodeCracker {
         }
         return answer;
     }
+
+    /**
+     * Encrypts the given message using this CodeCracker's key
+     * @param message the message to encrypt
+     * @return the encrypted message
+     */
+    public String encrypt(String message) {
+        return "";
+    }
 }
