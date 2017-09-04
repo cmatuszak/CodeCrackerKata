@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,10 +44,10 @@ public class CodeCracker {
      * @return the encrypted message
      */
     public String encrypt(String message) {
-        if (message.length() > 0) {
-            return key.get(alphabet.indexOf(message.substring(0, 1)));
-        } else {
-            return "";
+        String answer = "";
+        for (int i = 0; i < message.length(); i++) {
+            answer += key.get(alphabet.indexOf(message.substring(i, i + 1)));
         }
+        return answer;
     }
 }
