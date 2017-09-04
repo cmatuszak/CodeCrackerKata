@@ -48,4 +48,9 @@ public class CodeCrackerTest {
     public void testEncryptEmptyMessage() {
         Assert.assertEquals("", new CodeCracker("").encrypt(""));
     }
+
+    @Test
+    public void testEncryptionKeySame() {
+        Assert.assertEquals("a", new CodeCracker("a").encrypt("a"));
+    }
 }

@@ -45,6 +45,6 @@ public class CodeCracker {
      * @return the encrypted message
      */
     public String encrypt(String message) {
-        return "";
+        return message;
     }
 }
